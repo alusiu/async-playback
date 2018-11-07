@@ -1,6 +1,6 @@
 var playing = false;
-var knock;
-var ball;
+var slowly1;
+var slowly2;
 var button;
 
 
