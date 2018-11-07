@@ -15,8 +15,6 @@ var serialPortName = '/dev/cu.usbmodem1411';        //FOR PC it will be COMX on 
 
 
 function setup() {
-  /*createCanvas(400, 400);
-  angleMode(DEGREES);*/
 
   //Setting up the serial port
   serial = new p5.SerialPort();       //create the serial port object
