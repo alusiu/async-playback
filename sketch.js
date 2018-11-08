@@ -50,10 +50,19 @@ function setup() {
 function draw() {
   if ((force.right || force.left > 0)) {
     console.log("right: " + force.right+ " left: " + force.left+ 'greater than 0')
+    var playingRange = Math.abs(force.right - force.left);
 
     if (force.right > 0 ) { 
       slowly2.loop();
       playing2 = true;
+
+      if (force.right > force.left) {
+      
+        for (var i = 0; i < playingRange; i ++) {
+          slowly2.speed(i);
+        }
+        
+      }
     } else {
       slowly2.pause();
       playing2 = false;
@@ -61,27 +70,16 @@ function draw() {
 
     if (force.left > 0 ) {
       slowly1.loop();
+
+      if (force.left > force.right) {
+        for (var i = 0; i < playingRange; i ++) {
+          slowly1.speed(i);
+        }
       playing1 = true;
     } else {
       slowly1.pause();
       playing1 = false;
-    } 
-
-    var playingRange = Math.abs(force.right - force.left);
-    if (force.right > force.left) {
-      
-      for (var i = 0; i < playingRange; i ++) {
-        slowly2.speed(i);
-      }
-      
-    } else if (force.right < force.left) {
-      for (var i = 0; i < playingRange; i ++) {
-        slowly1.speed(i);
-      }
-    } else {
-      slowly1.speed(1);
-      slowly2.speed(1);
-    }
+    }   
 
   } else {
     slowly1.pause();
@@ -112,7 +110,7 @@ function draw() {
       }
     }
   }
-
+  }
 }
 function toggleVid() {
   if (playing) {
